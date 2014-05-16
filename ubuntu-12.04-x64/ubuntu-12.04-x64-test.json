@@ -1,0 +1,49 @@
+{
+  "variables": {
+      "ssh_name": "vagrant",
+      "ssh_pass": "vagrant",
+      "hostname": "ubuntu-tester"
+  },
+  "builders": [{
+      "type": "qemu",
+      "vm_name": "ubuntu-12.04-x64-test",
+
+      "iso_url": "http://releases.ubuntu.com/12.04/ubuntu-12.04.4-alternate-amd64.iso",
+      "iso_checksum": "46e0fac240154bf59a11426a47a61363",
+      "iso_checksum_type": "md5",
+
+      "disk_size": 8000,
+      "format": "qcow2",
+      "headless": false,
+      "accelerator": "kvm",
+      "net_device": "virtio-net",
+      "disk_interface": "virtio",
+
+      "ssh_wait_timeout": "30m",
+      "ssh_username": "{{user `ssh_name`}}",
+      "ssh_password": "{{user `ssh_pass`}}",
+      "ssh_port": 22,
+
+      "http_directory" : "http",
+      "http_port_min" : 8000,
+      "http_port_max" : 9000,
+
+      "shutdown_command": "echo {{user `ssh_pass`}} | sudo -S shutdown -P now",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed3.cfg ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname={{user `hostname`}} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=us keyboard-configuration/variant=us console-setup/ask_detect=false ",
+        "initrd=/install/initrd.gz -- <enter><wait>"
+      ]
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "echo {{user `ssh_pass`}} | sudo apt-get update",
+      "sudo apt-get install git"
+    ]
+  }]
+}
