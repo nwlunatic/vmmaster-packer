@@ -3,4 +3,8 @@ go:
   - 1.2
 install:
   - go get -u github.com/mitchellh/gox
-script: "git clone https://github.com/mitchellh/packer.git $GOPATH/src/github.com/mitchellh/packer; make; ./validate.sh"
+
+before_script:
+  - build_packer.sh
+
+script: "./validate.sh"
