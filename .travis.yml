@@ -1,2 +1,7 @@
-language: bash
+language: go
+go:
+  - tip
+install:
+  # - go get -u github.com/mitchellh/gox
+  - go get -u github.com/mitchellh/packer
 script: "./validate.sh"
