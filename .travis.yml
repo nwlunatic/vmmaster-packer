@@ -1,7 +1,6 @@
 language: go
 go:
-  - tip
+  - 1.2
 install:
-  # - go get -u github.com/mitchellh/gox
-  - go get -u github.com/mitchellh/packer
-script: "./validate.sh"
+  - go get -u github.com/mitchellh/gox
+script: "git clone https://github.com/mitchellh/packer.git $GOPATH/src/github.com/mitchellh/packer; make; ./validate.sh"
