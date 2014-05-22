@@ -98,7 +98,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
   $script = %Q{
-    sudo -S sh /vagrant/scripts/apps_autostart.sh
   }
 
 

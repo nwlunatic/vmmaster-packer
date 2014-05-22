@@ -18,7 +18,7 @@ X-GNOME-Autostart-enabled=true\n
 mkdir ~/.config
 mkdir ~/.config/autostart
 
-echo $SELENIUM_LAUNCHERS >> ~/.config/autostart/selenium-launchers.desktop
-echo $VMMASTER_AGENT >> ~/.config/autostart/vmmaster_agent.desktop
+echo $SELENIUM_LAUNCHERS > ~/.config/autostart/selenium-launchers.desktop
+echo $VMMASTER_AGENT > ~/.config/autostart/vmmaster_agent.desktop
 
 chown -R vagrant:vagrant ~/.config

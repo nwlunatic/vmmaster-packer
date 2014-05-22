@@ -8,4 +8,5 @@ umount /mnt/VBoxGuestAdditions
 rmdir /mnt/VBoxGuestAdditions
 rm ~/VBoxGuestAdditions.iso
 
-sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
+# fix for 4.3.10
+ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
