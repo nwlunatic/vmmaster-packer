@@ -2,7 +2,7 @@ language: go
 go:
   - 1.2
 install:
-  - go get -u github.com/mitchellh/gox
+  - go get -u github.com/mitchellh/packer
 
 before_script:
   - ./build_packer.sh
