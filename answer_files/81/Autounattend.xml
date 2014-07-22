@@ -230,7 +230,7 @@
                     <Description>Disable Hibernation Mode</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>%SystemRoot%\System32\reg.exe ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\" /v "AutoDetect" /t REG_DWORD /d 0 /f</CommandLine>
+                    <CommandLine>%SystemRoot%\System32\reg.exe ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v "AutoDetect" /t REG_DWORD /d 0 /f</CommandLine>
                     <Order>23</Order>
                     <Description>Uncheck automatically detect LAN settings</Description>
                 </SynchronousCommand>
