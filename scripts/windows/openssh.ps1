@@ -27,7 +27,7 @@ C:\Windows\System32\icacls.exe "C:\Users\vagrant" /grant "vagrant:(OI)(CI)F"
 C:\Windows\System32\icacls.exe "C:\Program Files\OpenSSH\bin" /grant "vagrant:(OI)RX"
 C:\Windows\System32\icacls.exe "C:\Program Files\OpenSSH\usr\sbin" /grant "vagrant:(OI)RX"
 
-Write-Host "Setting SSH home directories" 
+Write-Host "Setting SSH home directories"
     (Get-Content "C:\Program Files\OpenSSH\etc\passwd") |
     Foreach-Object { $_ -replace '/home/(\w+)', '/cygdrive/c/Users/$1' } |
     Set-Content 'C:\Program Files\OpenSSH\etc\passwd'
@@ -80,3 +80,6 @@ netsh advfirewall firewall add rule name="ssh" dir=in action=allow protocol=TCP 
 if ($AutoStart -eq $true) {
     Start-Service "OpenSSHd"
 }
+
+Write-Host "Rebooting"
+shutdown -r -t 0 -f

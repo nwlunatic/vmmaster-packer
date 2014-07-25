@@ -44,11 +44,14 @@
       "execute_command": "{{.Vars}} cmd /c C:/Windows/Temp/script.bat",
       "scripts": [
         "scripts/windows/vm-guest-tools.bat",
-        "scripts/windows/vagrant-ssh.bat"
+        "scripts/windows/vagrant-ssh.bat",
+        "scripts/windows/chocolatey.bat",
+        "scripts/windows/software.bat",
+        "scripts/windows/vmmaster.bat",
       ]
   },{
       "type": "shell",
-      "inline": ["rm -rf /tmp/*"]
+      "inline": ["rm -rf /tmp/* || true"]
   }],
   "post-processors": [{
       "type": "vagrant",
