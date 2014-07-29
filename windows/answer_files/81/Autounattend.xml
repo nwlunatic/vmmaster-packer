@@ -260,6 +260,11 @@
                     <Description>Disable Hibernation Mode</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
+                    <CommandLine>%SystemRoot%\System32\reg.exe ADD HKLM\System\CurrentControlSet\Control\Network\NetworkLocationWizard /v HideWizard /t REG_DWORD /d 1 /f</CommandLine>
+                    <Order>25</Order>
+                    <Description>Treat all networks as public</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\openssh.ps1</CommandLine>
                     <Description>Install OpenSSH</Description>
                     <Order>99</Order>
@@ -273,6 +278,13 @@
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand> -->
                 <!-- END WITH WINDOWS UPDATES -->
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>shutdown -r -t 0 -f</CommandLine>
+                    <Description>Reboot</Description>
+                    <Order>101</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+
             </FirstLogonCommands>
             <ShowWindowsLive>false</ShowWindowsLive>
         </component>

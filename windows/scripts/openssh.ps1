@@ -80,6 +80,3 @@ netsh advfirewall firewall add rule name="ssh" dir=in action=allow protocol=TCP 
 if ($AutoStart -eq $true) {
     Start-Service "OpenSSHd"
 }
-
-Write-Host "Rebooting"
-shutdown -r -t 0 -f
